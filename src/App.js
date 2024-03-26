@@ -1,42 +1,22 @@
-import logo from './logo.svg';
-import { useState, useEffect } from 'react';
 import './App.css';
 import './Header';
+import Home from './Home';
+import CreateThread from './CreateThread'
+import { BrowserRouter, Link, Switch, Route, Routes } from "react-router-dom";
 // import './Threads'
 
 function App() {
-  const ThreadUrl = 'https://railway.bulletinboard.techtrain.dev/threads';
-  const [threads, setThreads] = useState([]);
-
-  useEffect(() => {
-    const getTreads = async () => {
-      const response = await fetch(ThreadUrl);
-      const data = await response.json();
-      setThreads(data);
-    }
-    getTreads()
-  },[])
-
-  return (
+  return(
+  <BrowserRouter>
     <div className="App">
-      <header><div className="HeaderContainer">
-        <h1>掲示板</h1>
-        <p>スレッドをたてる</p>
-      </div>
-      </header>
-
-    <div className='ThreadContainer'></div>
-      <p>新着スレッド</p>
-      <div className="ThreadView">
-      {threads.map((thread,index) => (
-        <div key={index}>
-          <p>{thread.title}</p>
-        </div>
-      ))}
-      </div>
-
+    <Routes>
+    <Route path='/' element={<Home />} />
+    <Route path='/create_thread' element={<CreateThread />} />
+    </Routes>
     </div>
-  );
+    
+  </BrowserRouter>
+  )
 }
 
 export default App;
