@@ -1,5 +1,6 @@
 // @ts-check
 import { useState, useEffect } from 'react';
+import Header from './components/Header';
 
 export const Home = () => {
     const ThreadUrl = 'https://railway.bulletinboard.techtrain.dev/threads';
@@ -16,10 +17,7 @@ export const Home = () => {
 
     return (
         <div>
-            <div className="HeaderContainer">
-                <p className='title'>掲示板</p>
-                <a href='./'>スレッドをたてる</a>
-            </div>
+            <Header />
             <div className='ThreadContainer'>
                 <p className='contentTitle'>新着スレッド</p>
                 <div className="ThreadView">

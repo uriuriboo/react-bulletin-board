@@ -5,8 +5,8 @@ export const Header = () => {
     
     return (
         <div className="HeaderContainer">
-            <h1>掲示板</h1>
-            <p>スレッドをたてる</p>
+            <p className='title'>掲示板</p>
+            <a href='/create_thread'>スレッドをたてる</a>
         </div>
     )
 }
