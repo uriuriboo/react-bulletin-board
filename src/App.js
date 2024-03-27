@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/create_thread' element={<CreateThread />} />
+        <Route path='/thread/new' element={<CreateThread />} />
           <Route path='/thread' element={<Thread />} />
       </Routes>
     </div>
