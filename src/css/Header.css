@@ -1,0 +1,13 @@
+.HeaderContainer {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(145, 239, 170);
+    color: white;
+    align-items: center;
+    margin-bottom: 0;
+    padding-bottom: 0;
+
+    a {
+        margin-right: 30px;
+    }
+}

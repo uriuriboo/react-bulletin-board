@@ -1,6 +1,7 @@
 // @ts-check
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
+import './css/Home.css'
 
 export const Home = () => {
     const ThreadUrl = 'https://railway.bulletinboard.techtrain.dev/threads';
@@ -22,7 +23,7 @@ export const Home = () => {
                 <p className='contentTitle'>新着スレッド</p>
                 <div className="ThreadView">
                     {threads.map((thread, index) => (
-                        <div key={index} className='thread'>
+                        <div key={index} className='HomeThread'>
                             <p>{thread.title}</p>
                         </div>
                     ))}

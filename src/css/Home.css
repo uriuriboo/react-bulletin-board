@@ -1,0 +1,29 @@
+.title {
+    font-size: 30px;
+    margin-left: 30px;
+}
+
+.ThreadContainer {
+    background-color: darkgrey;
+    margin: 0 0 0 0;
+    padding-top: 0;
+    height: 900px;
+}
+
+.contentTitle {
+    font-size: 30px;
+    text-align: left;
+
+    /* もうちょっと綺麗なそろえ方はないか質問 */
+    margin-left: 370px;
+}
+
+.HomeThread {
+    background-color: white;
+    width: 500px;
+    height: 50px;
+    margin: 0 auto;
+    text-align: left;
+    border: 1px solid black;
+    padding-left: 10px;
+}

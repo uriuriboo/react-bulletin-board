@@ -1,6 +1,6 @@
 // @ts-check
 
-
+import '../css/Header.css';
 export const Header = () => {
     
     return (
