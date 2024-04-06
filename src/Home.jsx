@@ -24,7 +24,7 @@ export const Home = () => {
                 <div className="ThreadView">
                     {threads.map((thread, index) => (
                         <div key={index} className='HomeThread'>
-                            <p>{thread.title}</p>
+                            <p><a href={`/thread/${thread.id}`}>{thread.title}</a></p>
                         </div>
                     ))}
                 </div>
