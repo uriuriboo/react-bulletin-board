@@ -1,18 +1,18 @@
-// @ts-check
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
+import Header from './components/Header';
 
 export const Thread = () => {
-    const ThreadTitle = 'TechTrain';
-    const {ThreadId} = useParams();
-    const [ThreadData,setThreadData] = useState(null);
+    const { threadId } = useParams();
     const { state } = useLocation();
     const threadTitle = state && state.title;
+
+    const [threadData, setThreadData] = useState(null);
 
     useEffect(() => {
         const fetchThreadData = async () => {
             try {
-                const response = await fetch(`https://railway.bulletinboard.techtrain.dev/threads/${ThreadId}/posts`);
+                const response = await fetch(`https://railway.bulletinboard.techtrain.dev/threads/${threadId}/posts`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch thread data');
                 }
@@ -24,18 +24,16 @@ export const Thread = () => {
         };
 
         fetchThreadData();
-    },[]);
-    const comments = '';
-
+    }, [threadId]);
 
     return (
         <div className="Thread">
-                {ThreadData && (
+            <Header />
+            {threadData && (
                 <div className="ThreadContent">
-                <p>{ThreadData.title}</p>
-                <div className="Comments">{comments}</div>
+                    <p>{threadTitle}</p>
                     <ul>
-                        {ThreadData.posts.map((postData) => (
+                        {threadData.posts.map((postData) => (
                             <li key={postData.id}>{postData.post}</li>
                         ))}
                     </ul>
@@ -50,4 +48,4 @@ export const Thread = () => {
     )
 }
 
-export default Thread
+export default Thread;

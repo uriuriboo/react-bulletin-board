@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import './css/Home.css'
+import { Link } from 'react-router-dom'
 
 export const Home = () => {
     const ThreadUrl = 'https://railway.bulletinboard.techtrain.dev/threads';
