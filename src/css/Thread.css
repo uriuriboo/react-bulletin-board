@@ -1,0 +1,22 @@
+.Thread {
+    display: flex;
+    justify-content: center;
+    gap: 400px;
+    margin-top: 30px;
+}
+
+.ThreadContent {
+    width: 200px;
+}
+
+.SubmitContainer {
+    display: flex;
+    flex-direction: column; /* 子要素を縦方向に配置 */
+    gap: 10px; /* 子要素間の間隔を設定 */
+    width: 300px;
+  }
+
+.submitText {
+    height: 100px;
+    margin: 30px 0px 40px 0px;
+}

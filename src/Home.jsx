@@ -3,18 +3,22 @@ import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import './css/Home.css'
 import { Link } from 'react-router-dom'
+import axios from 'axios';
 
 export const Home = () => {
     const ThreadUrl = 'https://railway.bulletinboard.techtrain.dev/threads';
     const [threads, setThreads] = useState([]);
 
     useEffect(() => {
-        const getTreads = async () => {
-            const response = await fetch(ThreadUrl);
-            const data = await response.json();
-            setThreads(data);
-        }
-        getTreads()
+        const getThreads = async () => {
+            try {
+                const response = await axios.get(ThreadUrl);
+                setThreads(response.data);
+            } catch (error) {
+                console.error('Error fetching threads:', error);
+            }
+        };
+        getThreads();
     }, [])
 
     return (
@@ -28,7 +32,9 @@ export const Home = () => {
                         <p><Link to={{
                                     pathname: `/thread/${thread.id}`,
                                     state: { title: thread.title }
-                            }}>{thread.title}</Link></p>
+                            }}>
+                            {thread.title}
+                            </Link></p>
                         </div>
                     ))}
                 </div>

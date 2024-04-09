@@ -1,48 +1,68 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
+import axios from 'axios';
 import Header from './components/Header';
+import './css/Thread.css'
 
 export const Thread = () => {
     const { threadId } = useParams();
     const { state } = useLocation();
+    const [newPost, setNewPost] = useState('');
+    const [threadData, setThreadData] = useState(null);
+    const ThreadUrl = `https://railway.bulletinboard.techtrain.dev/threads/${threadId}/posts`
+    // stateがnull
     const threadTitle = state && state.title;
 
-    const [threadData, setThreadData] = useState(null);
-
     useEffect(() => {
-        const fetchThreadData = async () => {
+        const getThreadData = async () => {
             try {
-                const response = await fetch(`https://railway.bulletinboard.techtrain.dev/threads/${threadId}/posts`);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch thread data');
-                }
-                const data = await response.json();
-                setThreadData(data);
+                const response = await axios.get(ThreadUrl);
+                setThreadData(response.data);
             } catch (error) {
-                console.error('Error fetching thread data:', error);
+                console.error('スレッドデータの取得エラー:', error);
             }
         };
 
-        fetchThreadData();
-    }, [threadId]);
+        getThreadData();
+    }, [ThreadUrl]);
+
+    const handlePostSubmit = async () => {
+        try {
+            await axios.post(ThreadUrl, {post: newPost});
+            const response = await axios.get(ThreadUrl);
+            setThreadData(response.data);
+            setNewPost('');
+        }
+        catch (error){
+            console.error('投稿エラー:', error);
+        }
+    }
 
     return (
-        <div className="Thread">
+        <div>
             <Header />
-            {threadData && (
-                <div className="ThreadContent">
-                    <p>{threadTitle}</p>
-                    <ul>
-                        {threadData.posts.map((postData) => (
-                            <li key={postData.id}>{postData.post}</li>
-                        ))}
-                    </ul>
-                </div>
-            )}
+            <div className="Thread">
 
-            <div className="SubmitContainer">
-                <input />
-                <button>投稿</button>
+                {threadData && (
+                    <div className="ThreadContent">
+                        <p>{threadTitle}</p>
+                        <ul>
+                            {threadData.posts.map((postData) => (
+                                <li key={postData.id}>{postData.post}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+
+                <div className="SubmitContainer">
+                    <textarea className="submitText" type="text"
+                    placeholder="投稿しよう！"
+                    value={newPost}
+                    onChange={(e) => setNewPost(e.target.value)}
+                    />
+
+                    <button onClick={handlePostSubmit}>投稿</button>
+                </div>
             </div>
         </div>
     )
