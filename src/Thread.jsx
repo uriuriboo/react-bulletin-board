@@ -6,11 +6,11 @@ import './css/Thread.css'
 
 export const Thread = () => {
     const { threadId } = useParams();
-    const { state } = useLocation();
+    const {state} = useLocation();
+    console.log(useLocation())
     const [newPost, setNewPost] = useState('');
     const [threadData, setThreadData] = useState(null);
     const ThreadUrl = `https://railway.bulletinboard.techtrain.dev/threads/${threadId}/posts`
-    // stateがnull
     const threadTitle = state && state.title;
 
     useEffect(() => {
@@ -42,15 +42,13 @@ export const Thread = () => {
         <div>
             <Header />
             <div className="Thread">
-
+            <h1 className='ThreadTitle'>{threadTitle}</h1>
+            <div className="ThreadMain">
                 {threadData && (
                     <div className="ThreadContent">
-                        <p>{threadTitle}</p>
-                        <ul>
                             {threadData.posts.map((postData) => (
-                                <li key={postData.id}>{postData.post}</li>
+                                <p className="post" key={postData.id}>{postData.post}</p>
                             ))}
-                        </ul>
                     </div>
                 )}
 
@@ -61,10 +59,11 @@ export const Thread = () => {
                     onChange={(e) => setNewPost(e.target.value)}
                     />
 
-                    <button onClick={handlePostSubmit}>投稿</button>
+                    <button className="submitButton" onClick={handlePostSubmit}>投稿</button>
                 </div>
             </div>
         </div>
+    </div>
     )
 }
 

@@ -4,3 +4,21 @@
     gap: 50px;
     margin-top: 30px;
 }
+
+.CreateThread {
+    background-color: darkgray;
+    height: 100vh;
+}
+
+.ThreadTitle {
+    border: 2px solid black;
+}
+
+.CreateThreadButton {
+    color: black;
+    background-color:aquamarine;
+    border: none;
+}
+.CreateThreadButton:hover {
+    border: 1px solid black; 
+}
