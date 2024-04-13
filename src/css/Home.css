@@ -15,7 +15,7 @@
     text-align: left;
 
     /* もうちょっと綺麗なそろえ方はないか質問 */
-    margin-left: 370px;
+    margin:0 auto auto 370px;
 }
 
 .HomeThread {

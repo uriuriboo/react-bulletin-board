@@ -29,14 +29,14 @@ export const CreateThread = () => {
             <Header />
             <h1>スレッドを新規作成</h1>
 
-            <input type="text"
+            <input className="ThreadTitle" type="text"
             placeholder="スレッドタイトル"
             value={ThreadTitle}
             onChange={handleInputChange}
             />
             <div className='FlexContainer'>
                 <a href="/">Topに戻る</a>
-                <button onClick={handlePost}>スレッドを作成</button>
+                <button className="CreateThreadButton" onClick={handlePost}>スレッドを作成</button>
             </div>
 
         </div>

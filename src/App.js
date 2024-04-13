@@ -2,7 +2,7 @@ import './css/App.css';
 import Home from './Home';
 import CreateThread from './CreateThread'
 import Thread from './Thread';
-import { BrowserRouter, Link, Switch, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import './Threads'
 
 function App() {
@@ -11,8 +11,8 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/thread/new' element={<CreateThread />} />
-          <Route path='/thread' element={<Thread />} />
+        <Route path='/create_thread' element={<CreateThread />} />
+        <Route path='/thread/:threadId' element={<Thread />} />
       </Routes>
     </div>
   </BrowserRouter>

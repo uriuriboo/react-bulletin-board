@@ -1,0 +1,51 @@
+.Thread {
+    background-color: darkgrey;
+    margin-bottom: 0;
+}
+
+.ThreadTitle {
+    margin: 0 auto 0 auto;
+    border: none;
+}
+
+.ThreadMain {
+    display: flex;
+    justify-content: center;
+    gap: 400px;
+    margin-top: 30px;
+    height: 100vh;
+}
+
+.ThreadContent {
+    width: 200px;
+}
+
+.SubmitContainer {
+    display: flex;
+    flex-direction: column; /* 子要素を縦方向に配置 */
+    gap: 10px; /* 子要素間の間隔を設定 */
+}
+
+.submitText {
+    height: 100px;
+    margin: 0px 0px 40px 0px;
+    width: 200px;
+}
+
+.submitButton{
+    background-color:aquamarine;
+    height: 30px;
+    border: none;
+}
+
+.submitButton:hover{
+    border: 2px solid black;
+}
+
+.post {
+    background-color: white;
+    width: 400px;
+    text-align: left;
+    margin: 0px 0px 30px 10px;
+    padding:0 0px 0 10px;
+}
